@@ -38,14 +38,14 @@ public class CsController {
 		cs.setCsWriter(csWriter);
 		cs.setCsDetail(csDetail);
 		cs.setCsReply(csReply);
-				
+		
 		
 		
 		System.out.println(cs);
 		int result = CsService.insertCscenter(cs);
 		System.out.println(result);
 		if(result > 0) {
-			return "redirect:csListVIew.do";
+			return "redirect:home.do";
 		}else {
 			throw new lwException("공지사항 등록 실패!");
 		}
@@ -66,6 +66,13 @@ public class CsController {
 		
 	}
 	
+	@RequestMapping("csCenterUser.do")
+	public ModelAndView csCenterUser(ModelAndView mv) {
+		System.out.println("들어오나?");
+		
+		mv.setViewName("cscenter/csCenterUser");
+		return mv;		
+	}
 
 	@RequestMapping("csListVIew.do")
 	public ModelAndView csListVIew(ModelAndView mv) {

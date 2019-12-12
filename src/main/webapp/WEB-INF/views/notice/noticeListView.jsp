@@ -9,21 +9,30 @@
 <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 <title>공지사항</title>
    <style>
+   .content {
+	    margin-left: 423px;
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	    padding : 0 !important;
+	  	width : 1300px !important; 
+	  	height : auto !important; 
+	  	border : 1px solid red;
+	  	
+	}
    </style>
 </head>
 <body>
-	
-	<br><br>
-	
-	<c:if test="${!empty loginUser }">
-		<div align="center">
-			<button onclick="location.href='csListVIew.do'">글쓰기</button>
-		</div>
-	</c:if>
+	<jsp:include page="../common/mainMenuBar.jsp"/>	
+	<div class="content">
+	<br><br>	
 	<br>
 	<div style="border:0px;" align="center">
 	<img src="resources/images/Latteworld.png" height="330px" width="360px" align="center"><br>
+	<c:if test="${UserInfo.userType eq 2}">
+	<div align="center">
 	<button onclick="location.href='nWriterView.do'">글쓰기</button>
+	</div>
+	</c:if>
 	</div>
 	<table align="center" width="600" border="1" cellspacing="0" style="clear:right;" id="td">
 		<tr bgcolor="#99ccff">
@@ -73,7 +82,8 @@
 		<a href="${nlist }">목록 전체 보기</a>
 	</p>
 </div>
-	
+</div>
+	<jsp:include page="../common/footer.jsp"/>
 	
 	
 	

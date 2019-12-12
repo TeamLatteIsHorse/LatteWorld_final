@@ -7,9 +7,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	 .content {
+	    margin-left: 423px;
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	    padding : 0 !important;
+	  	width : 1300px !important; 
+	  	height : auto !important; 
+	  	border : 1px solid red;
+	  	
+	}
+</style>
 <body>
-	<%-- <jsp:include page="../common/menubar.jsp"/> --%>
-	
+	<jsp:include page="../common/mainMenuBar.jsp"/>
+	<div class="content">
 	<h1 align="center">${notice.nId }번 글 상세 보기</h1>
 	
 	<br><br>
@@ -66,8 +78,8 @@
 		
 	</table>
 	<!-- 일단은 여기까지 하고 공지사항 글쓰기를 완성해보자 noticeListView로 ㄱㄱ-->
-	
-	
+	</div>
+	<jsp:include page="../common/footer.jsp"/>
 	
 	
 	

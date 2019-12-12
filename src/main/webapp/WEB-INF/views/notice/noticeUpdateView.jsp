@@ -6,9 +6,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style>
+	 .content {
+	    margin-left: 423px;
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	    padding : 0 !important;
+	  	width : 1300px !important; 
+	  	height : auto !important; 
+	  	border : 1px solid red;
+	  	
+	}
+</style>
 <body>
-	<%-- <jsp:include page="../common/menubar.jsp"/>	 --%>
-	
+	<jsp:include page="../common/mainMenuBar.jsp"/>
+	<div class="content">
 	<h1 align="center">공지글 수정 페이지</h1>
 	
 	<br><br>
@@ -67,8 +79,8 @@
 		<a href="nlist.do">목록 보기로 이동</a>
 		<a href="javascript:history.go(-1);">이전 페이지로 이동</a>
 	</p>
-	
-	
+	</div>
+	<jsp:include page="../common/footer.jsp"/>
 	
 	
 	

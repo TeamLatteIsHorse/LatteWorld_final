@@ -8,6 +8,17 @@
 <title>Insert title here</title>
 
 <style>
+ .content {
+	    margin-left: 423px;
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	    padding : 0 !important;
+	  	width : 1300px !important; 
+	  	height : auto !important; 
+	  	border : 1px solid red;
+	  	
+	}
+
 * {
   box-sizing: border-box;
 }
@@ -28,7 +39,8 @@
 </style>
 </head>
 <body>
-
+<jsp:include page="../common/mainMenuBar.jsp"/>
+<div class="content">
 <c:forEach var="cs" items="${list}">
 <form action = "updateCsReply.do" method = "post">
 <div class="row">
@@ -41,6 +53,7 @@
     <div class="csdetail">${cs.csDetail }</div>
     <div class="csReply" align="center" width="500">${cs.csReply }</div>
     <br>
+    	<c:if test="${UserInfo.userType eq 2}">
 		<c:if test="${empty cs.csReply}">
     	<table align="center" width="500" border="1" cellspacing="0">
 		<tr>
@@ -51,6 +64,7 @@
 		</tr>
 		</table>
 		</c:if>
+		</c:if>
   </div>
   <!-- 답글 등록하기 -->
 
@@ -58,7 +72,8 @@
 </div>
 </form>
 </c:forEach>
-
+</div>
+<jsp:include page="../common/footer.jsp"/>
 
 </body>
 </html>

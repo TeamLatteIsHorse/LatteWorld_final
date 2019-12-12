@@ -6,6 +6,17 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+ .content {
+	    margin-left: 423px;
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	    padding : 0 !important;
+	  	width : 1300px !important; 
+	  	height : auto !important; 
+	  	border : 1px solid red;
+	  	
+	}
+
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
@@ -63,7 +74,8 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-
+<jsp:include page="../common/mainMenuBar.jsp"/>
+<div class="content">
 <h1>1:1 Q&A</h1>
 
 <div class="container">
@@ -80,16 +92,14 @@ input[type=submit]:hover {
     <label for="Qname">작성자</label>
     <input type="text" id="Qname" name="csWriter" placeholder="문의주시는 회원님의 성함을 입력해주세용">
 
-
-
     <label for="detail">상세내용</label>
     <textarea name="csDetail" placeholder="상세내역을 입력해 주세요:)" style="height:200px"></textarea>
-
 
     <input class="btn" type="button" onclick="location.href ='csCenter.do'" value="취소하기">
     <input class="btn" type="submit" value="작성하기">
   </form>
 </div>
-
+</div>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

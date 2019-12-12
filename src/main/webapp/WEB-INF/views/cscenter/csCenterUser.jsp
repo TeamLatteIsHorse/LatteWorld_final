@@ -4,216 +4,99 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 <title>Insert title here</title>
 </head>
 <style>
-  body{
-  	background-color: rgb(1, 2, 172);
-  }
-  p{
-   font-family: 'Press Start 2P';
-   	color:white;
-   }
-  .highlight {
-  font-family: 'Press Start 2P';
-  color: rgb(1, 2, 172);
-  background-color: rgb(172, 173, 168);
-  padding: 3px;
-  text-align: center;
-  width:150px;
-  }
-   .blink {
-  animation: blink 1s steps(2, start) infinite;
-}
-@keyframes blink {
-  to {
-    visibility: hidden;
-  }
-}
-
-.han {
-font-family:"궁서체";
-font-size:25px;
-font-weight:bold;
-text-align: center;
-color:rgb(1, 2, 172);
-background-color: rgb(172, 173, 168);
-padding: 3px;
-width:150px;
-}
-
-#content{
+.content {
+	    margin-left: 423px;
+	    margin-top: 4px;
+	    margin-bottom: 4px;
+	    padding : 0 !important;
+	  	width : 1300px !important; 
+	  	height : auto !important; 
+	  	border : 1px solid red;
+	  	
+	}
+	
+	#content{
 		max-width:1000px;
 		padding:30px 20px 56px;
 		margin: 10px auto;
 		width:70%;
 		border: 3px solid #ACADA8;
-		box-shadow:20px 20px 0px 0 black;
-		box-sizing:border-box;
-}
-
-#title{
-font-family:"궁서체";
-font-size:25px;
-font-weight:bold;
-color:#47C83E;
-
-	}
-	
-#p2{
-	font-family:"궁서체";
-	font-size:20px;
-	font-weight:bold;
-	color:white;
-	
 }
 .show{
 	display:block;
 	}
 	#myBtn{
-		font-family:"궁서체";
 		border:none;
 		font-weight:bold;
 		font-size:18px;
 		position:relative;
 		right:30px;
 		bottom:130px;
-		background-color: rgb(1, 2, 172);
-		color:yellow;
 	}
-	#myBtn:hover{
-		color:white;
-		background-color: red;
-		
-	}
-	ul{
+	
+		ul{
 		list-style:none; 
 		float:right; 
 	}
-	
-	.QA{
-		font-family: 'Press Start 2P';
-		color:white;
-	}
-	
-	.button1{
-		font-family:"궁서체";
-		border:none;
-		font-weight:bold;
-		font-size:18px;
-		color:white;
-		background-color: rgb(1, 2, 172);
-	}
-	.button1:hover{
-		color:#00D8FF;
-	}
-	#content2{
-		font-family:"궁서체";
+		#content2{
 		max-width:800px;
 		padding:30px 20px 56px;
 		margin: 10px auto;
 		width:70%;
-		background-color: rgb(1, 2, 172);
 		box-sizing:border-box;
-		color:white;
 		display:none;
 	}
 	#content3{
-		font-family:"궁서체";
 		max-width:800px;
 		padding:30px 20px 56px;
 		margin: 10px auto;
 		width:70%;
-		background-color: rgb(1, 2, 172);
 		box-sizing:border-box;
-		color:white;
 		display:none;
 		}
 	#content4{
-		font-family:"궁서체";
 		max-width:800px;
 		padding:30px 20px 56px;
 		margin: 10px auto;
 		width:70%;
-		background-color: rgb(1, 2, 172);
 		box-sizing:border-box;
-		color:white;
 		display:none;
 		}
 	#content5{
-		font-family:"궁서체";
 		max-width:800px;
 		padding:30px 20px 56px;
 		margin: 10px auto;
 		width:70%;
-		background-color: rgb(1, 2, 172);
 		box-sizing:border-box;
-		color:white;
 		display:none;
 		}
-	#dotcom{		
-		font-family: 'Press Start 2P';
-		color:white;
-	}	
-	
-	/* 프로그래스바 */
-	#myProgress {
-  		width: 50%;
-  		background-color: rgb(1, 2, 172);
-  		border: 1px solid white;
-	}
-
-	#myBar {
-       	width: 1%;
-  	    height: 30px;
- 		background-color: yellow;
-	}
-	
 </style>
-<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <body>
-
-	<div class='container'>
-   <div class="msg" align='center'>
-     <p class='highlight'>Windows</p>
-     <p>A fatal exception 0E has occured at 028:C00068F8 in VxD VMM(01) 000059F8. The current application will be terminated.</p>
-     <p>* Press any key to terminate the application.</p>
-     <p>* Press CTRL+ALT+DEL to restart your computer. You will lose any unsaved information in all aplications.</p>
- <div id="dotcom">COMS Setup Utility - COPYRIGHT (C) 2015 dotcom</div>
-     <br>
-     <p class="continue">Press any key to continue <span class="blink">_</span></p>
-     <br><br>
-     
-     <div id="myProgress">
-  <div id="myBar"></div>
-</div>
-<br><br>
-<div class="han" onclick="move()">공지사항</div>
-  </div>
-</div>
-
-
+<jsp:include page="../common/mainMenuBar.jsp"/>
+<div class="content">
 <div id = "content">
-<div id = "title">고객센터</div>
-<div>
+	<div id = "title">고객센터</div>
+	<div>
 <p id="p2">운영시간:평일 10~17시 (점심시간 12~13시) <br>
 이메일:kh@naver.com<br>
 전화:02)1234-5678
 </p>
 </div>
-<div class="abc">
+	<div class="abc">
 <input type="button" onclick="location.href='csWriteForm.do'" name="commit" value = "1:1문의하기" class="button1">
 		<ul>
-		<li><button id = "myBtn" class="awd1">> 배송은 얼마나 걸리나요?</button></li><br>
-		<li><button id = "myBtn" class="awd2">> 주문 취소는 어떻게 하나요?</button></li><br>
-		<li><button id = "myBtn" class="awd3">> 제품의 자세한 정보를 알고 싶어요.</button></li><br>
-		<li><button id = "myBtn" class="awd4">> 제품이 불량일 때는?</button></li><br>
-		<li><button id = "myBtn" class="awd5" onclick="location.href='csListVIew.do'">> 문의내역 보기</button></li>
+		<li><button id = "myBtn" class="awd1">배송은 얼마나 걸리나요?</button></li>
+		<li><button id = "myBtn" class="awd2">주문 취소는 어떻게 하나요?</button></li>
+		<li><button id = "myBtn" class="awd3">제품의 자세한 정보를 알고 싶어요.</button></li>
+		<li><button id = "myBtn" class="awd4">제품이 불량일 때는?</button></li>
+		<li><button id = "myBtn" class="awd5" onclick="location.href='csListVIew.do'">문의내역 보기</button></li>
 	</ul>
-</div>	
-	<br>
-<div id = "content2">
+		</div>	
+		<br>
+		<div id = "content2">
 	<div class="QA">Q</div> 배송은 얼마나 걸리나요? <br>
 	<br>
 	<div class="QA">A</div> 상품 배송 기간은 배송 유형에 따라 출고 일자 차이가 있습니다.<br>
@@ -257,8 +140,9 @@ color:#47C83E;
 	판매 업체에 교환/반품 가능 여부를 먼저 문의 부탁드립니다.<br>
 	<br><hr>
 </div>
+	</div>
 </div>
-	<script>
+<script>
 	$(function(){
 		$(".awd1").click(function(){
 			$("#content2").toggle();
@@ -283,30 +167,6 @@ color:#47C83E;
 		});		
 	});	
 </script>
-
-<script>
-var i = 0;
-function move() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("myBar");
-    var width = 1;
-    var id = setInterval(frame, 10);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-        elem.innerHTML = width + "%" + "complete";
-      }
-    }
-  }
-}
-</script>
-	<br>
-	<br>
-	<br>
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

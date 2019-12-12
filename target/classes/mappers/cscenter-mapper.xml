@@ -13,7 +13,7 @@
   
   <insert id="insertCscenter" parameterType="Cscenter">
   	INSERT INTO CS VALUES(
-  		SEQ_CSNO.NEXTVAL, #{csWriter}, #{csType}, #{csDetail}, SYSDATE 
+  		SEQ_CSNO.NEXTVAL, #{csWriter}, SYSDATE, #{csDetail}, #{csType}, NULL 
   	)
   </insert>
   

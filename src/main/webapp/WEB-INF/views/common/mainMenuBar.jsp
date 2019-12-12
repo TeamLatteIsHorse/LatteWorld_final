@@ -173,7 +173,12 @@ display : inline-block;
 				<p>내 미니홈피</p>
 				<p>내 BF 보기</p>
 				<a href = "noticeListView.do">공지사항</a>
-				<a href = "csCenter.do">고객센터</a>
+				<c:if test="${UserInfo.userType eq 2}">
+					<a href="csCenter.do">고객센터(관리자)</a>
+				</c:if>
+				<c:if test="${UserInfo.userType eq 1}">
+					<a href="csCenterUser.do">고객센터</a>
+				</c:if>
 			</div>
 			<div id="addLeftMenus">
 				<p>여다가는 뭘 넣지</p>
