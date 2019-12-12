@@ -66,7 +66,9 @@
 <body>
 <jsp:include page="../minihome/miniHomeMenubar.jsp" />
 <div class="centerArea">
-	<div class="subContent"></div>
+	<div class="subContent">
+		test
+	</div>
 	<div class="mainContent"></div>
 </div>
 <%@ include file="../minihome/miniHomefooter.jsp" %>
