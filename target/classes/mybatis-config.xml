@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<settings>
+		<setting name = "jdbcTypeForNull" value = "NULL"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.kh.LatteWorld.UserInfo.model.vo.UserInfo" alias="UserInfo"/>
+		<typeAlias type="com.kh.LatteWorld.minihome.model.vo.Minihomepy" alias="Minihomepy"/>
+		<typeAlias type="com.kh.LatteWorld.minihome.model.vo.MiniHomeFolder" alias="MiniHomeFolder"/>
+		<typeAlias type="com.kh.LatteWorld.minihome.model.vo.MiniHomePost" alias="MiniHomePost"/>
+		<typeAlias type="com.kh.LatteWorld.minihome.model.vo.MiniHomeProfile" alias="MiniHomeProfile"/>
+		<typeAlias type="com.kh.LatteWorld.item.model.vo.ItemStore" alias="ItemStore"/>
+		<typeAlias type="com.kh.LatteWorld.item.model.vo.KipItem" alias="KipItem"/>
+		<typeAlias type="com.kh.LatteWorld.item.model.vo.UserItemList" alias="UserItemList"/>
+		<typeAlias type="com.kh.LatteWorld.item.model.vo.Present" alias="Present"/>
+		<typeAlias type="com.kh.LatteWorld.Message.model.vo.Message" alias="Message"/>
+		<typeAlias type="com.kh.LatteWorld.bestFriend.model.vo.bfSearchCondition" alias="bfSearchCondition"/>
+		<typeAlias type="com.kh.LatteWorld.bestFriend.model.vo.BestFriend" alias="BestFriend"/>
+		<typeAlias type="com.kh.LatteWorld.notice.model.vo.Notice" alias="Notice"/>
+		<typeAlias type="com.kh.LatteWorld.cscenter.model.vo.Cscenter" alias="Cscenter"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/userinfo-mapper.xml"/>
+		<mapper resource="mappers/minihome-mapper.xml"/>
+		<mapper resource="mappers/item-mapper.xml"/>
+		<mapper resource="mappers/message-mapper.xml"/>
+		<mapper resource="mappers/bestfriend-mapper.xml"/>
+		<mapper resource="mappers/notice-mapper.xml"/>
+		<mapper resource="mappers/cscenter-mapper.xml"/>
+	</mappers>
+</configuration>
+

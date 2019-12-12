@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="miniHomeMapper">
+	<resultMap type="Minihomepy" id="minihomepyResultMap">
+		<id property="homepyNo" column="HOMEPYNO"/>
+		<result property="userId" column="USERID"/>
+		<result property="miniHomeTitle" column="MINIHOMETITLE"/>
+		<result property="minihomeColor" column="MINIHOMECOLOR"/>
+		<result property="totalCount" column="TOTALCOUNT"/>
+	</resultMap>
+	
+	<resultMap type="MiniHomeFolder" id="MiniHomeFolderResultMap">
+		<id property="folderNo" column="FOLDERNO"/>
+		<result property="homepyNo" column="HOMEPYNO"/>
+		<result property="postType" column="POSTTYPE"/>
+		<result property="postStatus" column="POSTSTATUS"/>
+		<result property="folderName" column="FOLDERNAME"/>
+	</resultMap>
+	
+	<resultMap type="MiniHomePost" id="MiniHomePostResultMap">
+		<id property="postNo" column="POSTNO" />
+		<result property="homepyNo" column="HOMEPYNO"/>
+		<result property="postWriter" column="POSTWRITER"/>
+		<result property="folderNo" column="FOLDERNO"/>
+		<result property="postType" column="POSTTYPE"/>
+		<result property="postTitle" column="POSTTITLE"/>
+		<result property="postContent" column="POSTCONTENT"/>
+		<result property="postCreateDT" column="POSTCREATEDT"/>
+		<result property="recommendCount" column="RECOMMENDCOUNT"/>
+		<result property="postStatus" column="POSTSTATUS"/>
+		<result property="postPwd" column="POSTPWD"/>
+		<result property="postCount" column="POSTCOUNT"/>
+		<result property="copyNo" column="COPYNO"/>
+		<result property="fileName" column="FILENAME"/>
+		<result property="fcName" column="FCNAME"/>
+	</resultMap>
+
+	<!-- 미니홈피 정보 가져오는 쿼리 - 맨처음 미니홈피 정보 로딩 할 때 userid 기준으로 -->
+	<select id="selectMiniHomeUserId" parameterType="string" resultMap="minihomepyResultMap">
+		SELECT * FROM MINIHOME WHERE USERID = #{userId}
+	</select>
+	
+	<!-- 미니홈피 정보 가져오는 쿼리 - 미니홈피 번호 기준으로 찾아오는 것-->
+	<select id="selectMiniHomeNo" parameterType="_int" resultMap="minihomepyResultMap">
+		SELECT * FROM MINIHOME WHERE HOMEPYNO = #{homepyNo}
+	</select>
+	
+	<select id="selectList" parameterType="MiniHomeProfile" resultMap="minihomepyResultMap">
+		SELECT *
+		FROM USERINFO
+		WHERE ID=#{id}
+		AND USERNAME=#{userName}
+		AND EMAIL=#{email}
+		AND PHONE=#{phone}
+	</select>
+
+	<update id="updateMiniHomeProfile" parameterType="MiniHomeProfile">
+		UPDATE MINIHOMEPROFILE
+		SET PROFILEIMAGE=#{profileImage},
+		PROFILECONTENT=#{profileContent},
+		PROFILEDATE=#{profileDate}
+		WHERE HOMEPYNO = #{homepyNo}
+	</update>
+
+	<select id="selectMiniHomeProfile" parameterType="String" resultType="MiniHomeProfile">
+		SELECT *
+		FROM MINIHOMEPROFILE A
+		LEFT JOIN MINIHOME B
+		ON A.HOMEPYNO = B.HOMEPYNO
+		WHERE B.USERID=#{userId}
+	</select>
+
+	<select id="selectProfileImg" parameterType="String" resultType="MiniHomeProfile">
+		SELECT *
+		FROM MINIHOMEPROFILE
+		WHERE HOMEPYNO=#{homepyNo}
+	</select>
+	
+	<!-- 전체 게시글 카운트 -->
+	<select id="AllPostListCount" parameterType="map" resultType="_int">
+		SELECT COUNT(*) FROM MINIHOMEPOST WHERE HOMEPYNO = #{homepyNo} AND POSTTYPE = #{postType}
+	</select>
+	
+	<!-- 게시글 전체보기 -->
+	<select id="selectAllPostList" parameterType="map" resultMap="MiniHomePostResultMap">
+		SELECT * FROM MINIHOMEPOST WHERE HOMEPYNO = #{homepyNo} AND POSTTYPE = #{postType} ORDER BY 1 DESC
+	</select>
+	
+	<!-- 폴더 목록 가져오는 것 -->
+	<select id="selectFolderList" parameterType="map" resultMap="MiniHomeFolderResultMap">
+		SELECT * FROM MINIHOMEFOLDER WHERE HOMEPYNO = #{homepyNo} AND POSTTYPE = #{postType}
+	</select>
+	
+	<!-- 게시글 조회수  -->
+	<update id="postDetailCount" parameterType="_int">
+		UPDATE MINIHOMEPOST SET POSTCOUNT = POSTCOUNT+1 WHERE POSTNO = #{postNo}
+	</update>	
+	
+	<!-- 게시글 상세보기 -->
+	<select id="selectOnePost" parameterType="_int" resultMap="MiniHomePostResultMap">
+		SELECT * FROM MINIHOMEPOST WHERE POSTNO = #{postNo} 
+	</select>
+	
+	<!-- 폴더마다 게시글 카운트 -->
+	<select id="postListCount" parameterType="map" resultType="_int">
+		SELECT COUNT(*) FROM MINIHOMEPOST WHERE POSTTYPE = #{postType} AND HOMEPYNO = #{homepyNo} AND FOLDERNO = #{folderNo}
+	</select>
+	
+	<!-- 폴더마다 게시글 불러오기 -->
+	<select id="selectPostList" parameterType="map" resultMap="MiniHomePostResultMap">
+		SELECT * FROM MINIHOMEPOST WHERE POSTTYPE = #{postType} AND HOMEPYNO = #{homepyNo} AND FOLDERNO = #{folderNo} ORDER BY 1 DESC
+	</select>
+	
+	<!-- 폴더추가하기 -->
+	<insert id="addFolder" parameterType="MiniHomeFolder">
+		INSERT INTO MINIHOMEFOLDER VALUES(#{folderNo}, #{homepyNo}, #{postType}, 'Y', ${folderName})
+	</insert>
+	
+	<insert id="insertPost" parameterType="MiniHomePost">
+		INSERT INTO MINIHOMEPOST VALUES(seq_post.nextval, #{homepyNo}, #{postWriter}, #{folderNo} ,
+		 #{postType}, #{postTitle}, #{postContent}, SYSDATE, 0, 'Y', NULL, 0, NULL, NULL, NULL);
+	</insert>
+</mapper>
+

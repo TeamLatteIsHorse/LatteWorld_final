@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userinfoMapper">
+	<resultMap type="UserInfo" id="UserInfoResultMap">
+		<id property="userId" column="USERID" />
+		<result property="userPwd" column="USERPWD"/>
+		<result property="userName" column="USERNAME"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="userType" column="USERTYPE"/>
+		<result property="userStatus" column="USERSTATUS"/>
+		<result property="point" column="POINT"/>
+	</resultMap>
+	
+	<insert id="insertUser" parameterType="UserInfo">
+		INSERT INTO USERINFO
+		VALUES(#{userId}, #{userPwd}, #{userName}, #{email}, #{phone},
+		DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<!-- 미니홈피 -->
+	<select id="selectUserInfo" parameterType="string" resultMap="UserInfoResultMap"> 
+		SELECT * FROM USERINFO WHERE USERID = #{userId}
+	</select>
+	
+	<insert id="insertMiniHome" parameterType="UserInfo">
+		INSERT INTO MINIHOME VALUES(SEQ_MINIHOME.NEXTVAL, #{userId}, #{userId} || '님의 미니홈피입니다.' , 'gray', 0)
+	</insert>
+	
+	<insert id="insertMiniHomeProfile">
+		INSERT INTO MINIHOMEPROFILE
+		VALUES(SEQ_PROFILE.NEXTVAL, SEQ_MINIHOME.CURRVAL, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<insert id="insertFolderList1">
+		INSERT INTO MINIHOMEFOLDER VALUES(1, SEQ_MINIHOME.CURRVAL, 'B', 'Y', '일반게시판')
+	</insert>
+	
+	<insert id="insertFolderList2">
+		INSERT INTO MINIHOMEFOLDER VALUES(1, SEQ_MINIHOME.CURRVAL, 'P', 'Y', '사진게시판')
+	</insert>
+	
+	<!-- 미니홈피 -->
+	
+	<select id="checkRegister" parameterType="string">
+		resultType="_int">
+		SELECT COUNT(*)
+		FROM USERINFO
+		WHERE USERID = #{userId}
+	</select>
+	
+	<select id="selectUser" parameterType="UserInfo"
+		resultType="UserInfo">
+		SELECT *
+		FROM USERINFO
+		WHERE USERID = #{userId}
+	</select>
+	
+	<select id="myPageUser" parameterType="UserInfo"
+		resultType="UserInfo">
+		SELECT *
+		FROM USERINFO
+		WHERE USERID = #{userId}
+	</select>
+	
+	<update id="updateUser" parameterType="UserInfo">
+		UPDATE USERINFO
+		SET USERPWD
+		= #{userPwd}
+		WHERE USERID = #{userId}
+	</update>
+	
+	<select id="checkIdDup" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM USERINFO
+		WHERE USERID = #{userId}
+	</select>
+</mapper>
